@@ -33,6 +33,12 @@ class EventsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@event = set_event
+		@event.destroy
+		redirect_to events_path
+	end
+
 	private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
