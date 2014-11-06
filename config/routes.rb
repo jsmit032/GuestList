@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :resources
+  resources :sessions
   resources :users
 
   resources :events
