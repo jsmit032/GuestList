@@ -3,6 +3,10 @@ class EventsController < ApplicationController
 		@events = Event.all
 	end
 
+	def show
+		@event = set_event
+	end
+
 	def new
 		@event = Event.new
 	end

@@ -1,0 +1,10 @@
+<h1><%= @event.name %></h1>
+
+<p><%= @event.location %></p>
+<p>Date: <%= @event.date %><br>
+Time: <%= @event.time %></p>
+
+<h3><%= @event.venue %></h3>
+<p>address: <%= @event.venue_address %></p>
+
+<%= link_to "Back to Events", events_path %>
