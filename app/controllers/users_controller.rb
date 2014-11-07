@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
+	skip_before_filter :authorize, :except => [:index]
+
 	def index
+		@users = User.all
 	end
 
 	def new

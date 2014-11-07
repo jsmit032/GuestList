@@ -1,1 +1,15 @@
-<p>I'm a place holder page. I'm located in <%= users_path %> /index.html.erb </p>
+<h1>List Users</h1>
+<table>
+	<thead>
+		<th>email</th>
+	</thead>
+	<tbody>
+	<% @users.each do |u| %>
+		<tr>
+			<td><%= link_to u.email, edit_user_path(u) %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
+
+<%= link_to "Show Events", events_path %>
