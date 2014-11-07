@@ -5,6 +5,10 @@ class UsersController < ApplicationController
 		@users = User.all
 	end
 
+	def show
+		@user = set_user
+	end
+
 	def new
 		@user = User.new
 	end
@@ -19,7 +23,30 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def edit
+		@user = set_user
+	end
+
+	def update
+		@user = set_user
+		if @user.update_attributes(user_params)
+			redirect_to user_path(@user), notice: "#{@user.email} has been updated"
+		else
+			render "edit"
+		end
+	end
+
+	def destroy
+		@user = set_user
+		@user.destroy
+		redirect_to users_path
+	end
+
 	private
+	def set_user
+		User.find(params[:id])
+	end
+
 	def user_params
 		params.require(:user).permit(:email, :password, :password_confirmation)
 	end

@@ -6,7 +6,7 @@
 	<tbody>
 	<% @users.each do |u| %>
 		<tr>
-			<td><%= link_to u.email, edit_user_path(u) %></td>
+			<td><%= link_to u.email, user_path(u) %></td>
 		</tr>
 	<% end %>
 	</tbody>
