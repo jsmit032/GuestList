@@ -8,4 +8,17 @@ Time: <%= @event.time %></p>
 <h3><%= @event.venue %></h3>
 <p>address: <%= @event.venue_address %></p>
 
+<h3>Invited Guests: </h3>
+<p>Count: <%= @users.count %></p>
+<!-- <ul>
+<%# @invites.each do |i| %>
+	<li><%#= i.user_id %></li>
+<%# end %>
+</ul> -->
+<% @users.each do |one_invite| %>
+<ul>
+	<li><%= one_invite.email %></li>
+</ul>
+<% end %>
+
 <%= link_to "Back to Events", events_path %>

@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :sessions
   resources :users
 
-  resources :events
+  resources :events do
+    resources :invites, shallow: true
+  end
 
   root 'users#index'
   # The priority is based upon order of creation: first created -> highest priority.

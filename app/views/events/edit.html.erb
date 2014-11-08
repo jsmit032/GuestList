@@ -26,6 +26,10 @@
 		<%= f.text_field :venue_address %>
 	</div>
 
+	<div class="field">
+		<%= f.collection_check_boxes :user_ids, User.all, :id, :email  %>
+	</div>
+
 	<div class="action">
 		<%= f.submit "Save Changes!" %>
 	</div>
