@@ -28,9 +28,13 @@ class EventsController < ApplicationController
 	end
 
 	def update
-		raise params.inspect
 		@event = Event.find(params[:id])
 		if @event.update_attributes(event_params)
+			@event.invites.each do |one_invite|
+				if one_invite.event_id.nil? || one_invite.user_id.nil?
+					one_invite.destroy
+				end
+			end
 			redirect_to events_path
 		else
 			render 'edit'
