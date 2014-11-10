@@ -2,8 +2,9 @@
 <%= link_to "Edit", edit_event_path(@event) %> | <%= link_to "Delete", :event, method: :delete, data: { confirm: "Are you sure you want to delete #{@event.name}?" } %>
 
 <p><%= @event.location %></p>
-<p>Date: <%= @event.date %><br>
-Time: <%= @event.time %></p>
+<p>Date: <%= @event.date.strftime('%A, %B %d, %Y') %><br>
+	<!-- holds the time on the day event was created -->
+Time: <%= @event.time.strftime('%I:%M %p') %></p>
 
 <h3><%= @event.venue %></h3>
 <p>address: <%= @event.venue_address %></p>

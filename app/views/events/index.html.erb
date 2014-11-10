@@ -21,8 +21,9 @@
 						<tr>
 							<td><%= link_to event.name, event_path(event) %></td>
 							<td><%= event.location %></td>
-							<td><%= event.date %></td>
-							<td><%= event.time %></td>
+							<td><%= event.date.strftime('%b %d, %Y') %></td>
+							<!-- holds the time on the day event was created -->
+							<td><%= event.time.strftime('%I:%M %p') %></td>
 						</tr>
 						<% end %>
 					</tbody>
