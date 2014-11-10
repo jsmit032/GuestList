@@ -1,15 +1,28 @@
-<h1>List Users</h1>
-<table>
-	<thead>
-		<th>email</th>
-	</thead>
-	<tbody>
-	<% @users.each do |u| %>
-		<tr>
-			<td><%= link_to u.email, user_path(u) %></td>
-		</tr>
-	<% end %>
-	</tbody>
-</table>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">List Users</h3>
+				</div>
 
-<%= link_to "Show Events", events_path %>
+				<div class="panel-body">
+				<table class="table table-hover" id="dev-table">
+					<thead>
+						<th>Name</th>
+						<th>email</th>
+					</thead>
+					<tbody>
+					<% @users.each do |u| %>
+						<tr>
+							<td><%= u.first_name %> <%= u.last_name %></td>
+							<td><%= link_to u.email, user_path(u) %></td>
+						</tr>
+					<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<%= link_to "Show Events", events_path %>
+	</div>
+</div>
