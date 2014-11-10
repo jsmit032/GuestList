@@ -6,13 +6,14 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		u = User.where(email:params[:email]).first
-		if u && u.authenticate(params[:password])
+		user = User.where(email:params[:email]).first
+		if user && user.authenticate(params[:password])
 			# sets the cookie to the browser
-			session[:user_id] = u.id.to_s
-			redirect_to root_url, notice: "Logged in!"
+			session[:user_id] = user.id.to_s
+			flash[:success] = "Logged in!"
+			redirect_to root_url
 		else
-			flash[:alert] = "Email or password invalid"
+			flash.now[:danger] = 'Invalid email/password combination'
 			render "new"
 			# redirect_to new_session_path
 		end
@@ -20,6 +21,7 @@ class SessionsController < ApplicationController
 
 	def destroy
 		reset_session
-		redirect_to root_path, notice: "Logged out!"
+		flash[:alert] = "Logged Out!"
+		redirect_to login_path
 	end
 end
