@@ -1,13 +1,16 @@
 class Event
   include Mongoid::Document
-  field :name, type: String
-  field :location, type: String
+  field :name, type: String, default: "TBD"
+  field :location, type: String, default: "TBD"
   field :date, type: Date
   field :time, type: Time
-  field :venue, type: String
-  field :venue_address, type: String
+  field :venue, type: String, default: "TBD"
+  field :venue_address, type: String, default: "TBD"
 
   has_many :invites
+
+  validates :date, presence: true
+  validates :time, presence: true
 
   def users
     User.find user_ids
