@@ -18,7 +18,8 @@ class UsersController < ApplicationController
 
 		if @user.save
 			session[:user_id] = @user.id.to_s
-			redirect_to root_url, notice: "Thank you for signing up!"
+			flash[:success] = "Thank you for signing up!"
+			redirect_to root_url
 		else
 			render "new"
 		end
