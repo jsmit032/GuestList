@@ -8,14 +8,16 @@ class ApplicationController < ActionController::Base
 
   private 
 
-  # def current_user
-  # 	@current_user ||= User.where(id: session[:user_id]).first
-  # end
+  def current_user
+  	@current_user ||= User.where(id: session[:user_id]).first
+  end
 
   def current_user=(user)
     @current_user = user
-    session[:user_id] = user.try(:to_s)
+    session[:user_id] = user.try(:id).try(:to_s)
   end
+
+  # session[:user_id] = User.where(id: session[user.try(:to_s)]).first
 
   def authorize
   	redirect_to login_url, alert: "Not authorized" if current_user.nil?
