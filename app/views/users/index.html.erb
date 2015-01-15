@@ -2,6 +2,12 @@
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
 			<div class="panel panel-primary">
+
+				<ul class="nav nav-tabs">
+				    <li ng-class="{active:isActive('/users')}"><a href="#/users">Users</a></li>
+				    <li ng-class="{active:isActive('/events')}"><a href="#/events">Events</a></li>
+				</ul>
+
 				<div class="panel-heading">
 					<h3 class="panel-title">List Users</h3>
 				</div>
@@ -24,5 +30,6 @@
 			</div>
 		</div>
 		<%= link_to "Show Events", events_path %>
+		{{connected}}
 	</div>
 </div>
