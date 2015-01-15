@@ -8,8 +8,13 @@ class ApplicationController < ActionController::Base
 
   private 
 
-  def current_user
-  	@current_user ||= User.where(id: session[:user_id]).first
+  # def current_user
+  # 	@current_user ||= User.where(id: session[:user_id]).first
+  # end
+
+  def current_user=(user)
+    @current_user = user
+    session[:user_id] = user.try(:id).try(:to_s)
   end
 
   def authorize
