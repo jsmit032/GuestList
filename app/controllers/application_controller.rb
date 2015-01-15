@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   def current_user=(user)
     @current_user = user
-    session[:user_id] = user.try(:id).try(:to_s)
+    session[:user_id] = user.try(:to_s)
   end
 
   def authorize
