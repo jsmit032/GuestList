@@ -6,6 +6,6 @@ angular.module('GuestList')
 		return route === $location.path();
 	}
 
-	$scope.connected = function() { console.log("CONNECTED!"); };
+	$scope.things = ['Angular', 'Rails 4.1', 'UI Router', 'Together!!'];
 
 }]);
